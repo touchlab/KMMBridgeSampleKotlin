@@ -1,7 +1,7 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
-    id("co.touchlab.faktory.kmmbridge") version "0.1.15-SNAPSHOT"
+    id("co.touchlab.faktory.kmmbridge") version "0.1.19-SNAPSHOT"
     kotlin("native.cocoapods")
 }
 
@@ -29,8 +29,9 @@ android {
 }
 
 kmmbridge {
-    githubRelease()
-    cocoapods("git@github.com:touchlab/PublicPodspecs.git")
-    versionPrefix.set("0.2")
+    githubReleaseArtifacts()
+    githubReleaseVersions()
     spm("..")
+    cocoapods("git@github.com:touchlab/PublicPodspecs.git")
+    versionPrefix.set("0.5")
 }
