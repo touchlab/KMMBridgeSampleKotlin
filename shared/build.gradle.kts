@@ -33,7 +33,7 @@ android {
 kmmbridge {
     githubReleaseArtifacts()
     githubReleaseVersions()
-    spm()
+    spm(packageName ="Mike")
 //    cocoapods("git@github.com:touchlab/PublicPodspecs.git")
     versionPrefix.set("0.6")
 }
