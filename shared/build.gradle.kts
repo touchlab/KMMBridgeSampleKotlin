@@ -50,6 +50,18 @@ artifactory {
         })
     })
 }
+publishing {
+    repositories {
+        maven {
+            // change to point to your repo, e.g. http://my.org/repo
+            url = uri("https://touchlabtest.jfrog.io/artifactory/faktorygradle")
+            credentials {
+                this.username = "michaelf@touchlab.co"
+                this.password = "cmVmdGtuOjAxOjAwMDAwMDAwMDA6SGxIZ0l2Uk51VkNHM1dRSXpyM1dIRVd1RnA5"
+            }
+        }
+    }
+}
 
 kmmbridge {
     mavenPublishArtifacts("https://touchlabtest.jfrog.io/artifactory/faktorygradle")
