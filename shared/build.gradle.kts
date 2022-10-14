@@ -1,6 +1,3 @@
-import org.jfrog.gradle.plugin.artifactory.dsl.DoubleDelegateWrapper
-import org.jfrog.gradle.plugin.artifactory.dsl.PublisherConfig
-
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
@@ -50,18 +47,23 @@ android {
 //        })
 //    })
 //}
+
+val USERNAME: String by project
+val PASSWORD: String by project
 publishing {
     repositories {
         maven {
             // change to point to your repo, e.g. http://my.org/repo
             url = uri("https://touchlabtest.jfrog.io/artifactory/faktorygradle")
             credentials {
-                this.username = "UNAME"
-                this.password = "TOKEN"
+                logger.warn("MRF $USERNAME")
+                this.username = USERNAME
+                this.password = PASSWORD
             }
         }
     }
 }
+
 
 kmmbridge {
     mavenPublishArtifacts("https://touchlabtest.jfrog.io/artifactory/faktorygradle")
