@@ -4,7 +4,7 @@ import org.jfrog.gradle.plugin.artifactory.dsl.PublisherConfig
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
-    id("co.touchlab.faktory.kmmbridge") version "0.2.6"
+    id("co.touchlab.faktory.kmmbridge") version "0.2.6-SNAPSHOT"
     id("maven-publish")
     id("com.jfrog.artifactory") version "4.13.0"
     kotlin("native.cocoapods")
@@ -38,16 +38,23 @@ artifactory {
     publish(delegateClosureOf<PublisherConfig> {
         repository(delegateClosureOf<DoubleDelegateWrapper> {
             setProperty("repoKey", "faktorygradle")
-//            setProperty("username", "michaelf@touchlab.co")
-//            setProperty("password", "eyJ2ZXIiOiIyIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYiLCJraWQiOiJXZmtmdmwxMVFMY1BmWGJkanJjWndOUEwtS3R5ZEFtTFpwSmxIMWRKUGJVIn0")
+            setProperty("username", "michaelf@touchlab.co")
+            setProperty("password", "AKCp8nGjrj1MCdDphMXseNyET71htb6YUUZ2J3R6go8eesdJ89LsAJZJkAVk8R2GgoSDo2dww")
             setProperty("maven", true)
+        })
+        defaults(delegateClosureOf<groovy.lang.GroovyObject> {
+            invokeMethod(
+                "publications",
+                arrayOf("jvm", "js", "native", "kotlinMultiplatform", "metadata")
+            )
         })
     })
 }
 
 kmmbridge {
-    mavenPublishArtifacts()
+    mavenPublishArtifacts("https://touchlabtest.jfrog.io/artifactory/faktorygradle")
     timestampVersions()
+//    githubReleaseArtifacts()
     spm()
 //    cocoapods("git@github.com:touchlab/PublicPodspecs.git")
     versionPrefix.set("0.6")
