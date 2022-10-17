@@ -19,7 +19,6 @@ jobs:
           distribution: "adopt"
           java-version: "11"
       - name: Apply SSH Key
-        if: ${{ env.PODSPEC_SSH_KEY_EXISTS == 'true' }}
         uses: webfactory/ssh-agent@v0.5.4
         with:
           ssh-private-key: ${{ secrets.PODSPEC_SSH_KEY }}
