@@ -48,12 +48,12 @@ android {
 //    })
 //}
 
-val USERNAME: String by project
-val PASSWORD: String by project
 publishing {
     repositories {
         maven {
             // change to point to your repo, e.g. http://my.org/repo
+            val USERNAME: String? by project
+            val PASSWORD: String? by project
             name = "Artifactory"
             url = uri("https://touchlabtest.jfrog.io/artifactory/faktorygradle")
             credentials {
