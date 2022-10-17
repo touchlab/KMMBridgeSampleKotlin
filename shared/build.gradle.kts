@@ -56,7 +56,6 @@ publishing {
             // change to point to your repo, e.g. http://my.org/repo
             url = uri("https://touchlabtest.jfrog.io/artifactory/faktorygradle")
             credentials {
-                logger.warn("MRF $USERNAME")
                 this.username = USERNAME
                 this.password = PASSWORD
             }
@@ -66,7 +65,7 @@ publishing {
 
 
 kmmbridge {
-    mavenPublishArtifacts("https://touchlabtest.jfrog.io/artifactory/faktorygradle")
+    mavenPublishArtifacts()
     timestampVersions()
 //    githubReleaseArtifacts()
     spm()
