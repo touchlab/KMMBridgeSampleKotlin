@@ -10,5 +10,3 @@ pluginManagement {
 rootProject.name = "KMMBridgeSampleKotlin"
 include(":app" ,":shared")
 
-
-includeBuild("../KMMBridge")
