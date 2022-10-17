@@ -10,9 +10,9 @@ jobs:
 
       - uses: extractions/netrc@v1
         with:
-            machine: api.github.com
-            username: "cirunner"
-            password: ${{ secrets.GITHUB_TOKEN }}
+            machine: touchlabtest.jfrog.io
+            username: ${{ secrets.ARTIFACTORY_USERNAME }}
+            password: ${{ secrets.ARTIFACTORY_PASSWORD }}
 
       - uses: actions/setup-java@v2
         with:
