@@ -5,8 +5,8 @@ jobs:
   call-kmmbridge-publish:
     runs-on: macos-latest
     steps:
-      - name: Checkout the repo
-        uses: actions/checkout@v3
+#      - name: Checkout the repo
+#        uses: actions/checkout@v3
 
       - uses: extractions/netrc@v1
         with:
@@ -14,21 +14,22 @@ jobs:
             username: ${{ secrets.ARTIFACTORY_USERNAME }}
             password: ${{ secrets.ARTIFACTORY_PASSWORD }}
 
-      - uses: actions/setup-java@v2
-        with:
-          distribution: "adopt"
-          java-version: "11"
-      - name: Apply SSH Key
-        uses: webfactory/ssh-agent@v0.5.4
-        with:
-          ssh-private-key: ${{ secrets.PODSPEC_SSH_KEY }}
-
-      - name: Validate Gradle Wrapper
-        uses: gradle/wrapper-validation-action@v1
-
-      - name: publish
-        run: ./gradlew kmmBridgePublish -PUSERNAME=${{ secrets.ARTIFACTORY_USERNAME}} -PPASSWORD=${{ secrets.ARTIFACTORY_PASSWORD }}
-#    uses: touchlab/KMMBridgeGithubWorkflow/.github/workflows/faktorybuildbranches.yml@v0.3
-#    secrets:
-#      PODSPEC_SSH_KEY: ${{ secrets.PODSPEC_SSH_KEY }}
-#      GRADLE_PARAMS: -PUSERNAME=${{ secrets.ARTIFACTORY_USERNAME}} -PPASSWORD=${{ secrets.ARTIFACTORY_PASSWORD }}
+    uses: touchlab/KMMBridgeGithubWorkflow/.github/workflows/faktorybuildbranches.yml@v0.3
+    secrets:
+      PODSPEC_SSH_KEY: ${{ secrets.PODSPEC_SSH_KEY }}
+      GRADLE_PARAMS: -PUSERNAME=${{ secrets.ARTIFACTORY_USERNAME}} -PPASSWORD=${{ secrets.ARTIFACTORY_PASSWORD }}
+#
+#      - uses: actions/setup-java@v2
+#        with:
+#          distribution: "adopt"
+#          java-version: "11"
+#      - name: Apply SSH Key
+#        uses: webfactory/ssh-agent@v0.5.4
+#        with:
+#          ssh-private-key: ${{ secrets.PODSPEC_SSH_KEY }}
+#
+#      - name: Validate Gradle Wrapper
+#        uses: gradle/wrapper-validation-action@v1
+#
+#      - name: publish
+#        run: ./gradlew kmmBridgePublish -PUSERNAME=${{ secrets.ARTIFACTORY_USERNAME}} -PPASSWORD=${{ secrets.ARTIFACTORY_PASSWORD }}
