@@ -3,7 +3,28 @@ on: workflow_dispatch
 
 jobs:
   call-kmmbridge-publish:
-    uses: touchlab/KMMBridgeGithubWorkflow/.github/workflows/faktorybuildbranches.yml@v0.3
-    secrets:
-      PODSPEC_SSH_KEY: ${{ secrets.PODSPEC_SSH_KEY }}
-      GRADLE_PARAMS: -PUSERNAME=${{ secrets.ARTIFACTORY_USERNAME}} -PPASSWORD=${{ secrets.ARTIFACTORY_PASSWORD }}
+    runs-on: macos-latest
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v3
+
+      - uses: extractions/netrc@v1
+        with:
+            machine: api.github.com
+            username: "cirunner"
+            password: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-java@v2
+        with:
+          distribution: "adopt"
+          java-version: "11"
+
+      - name: Validate Gradle Wrapper
+        uses: gradle/wrapper-validation-action@v1
+
+      - name: publish
+        run: ./gradlew kmmBridgePublish -PUSERNAME=${{ secrets.ARTIFACTORY_USERNAME}} -PPASSWORD=${{ secrets.ARTIFACTORY_PASSWORD }}
+#    uses: touchlab/KMMBridgeGithubWorkflow/.github/workflows/faktorybuildbranches.yml@v0.3
+#    secrets:
+#      PODSPEC_SSH_KEY: ${{ secrets.PODSPEC_SSH_KEY }}
+#      GRADLE_PARAMS: -PUSERNAME=${{ secrets.ARTIFACTORY_USERNAME}} -PPASSWORD=${{ secrets.ARTIFACTORY_PASSWORD }}
