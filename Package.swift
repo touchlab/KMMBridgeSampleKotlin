@@ -1,7 +1,7 @@
 // swift-tools-version:5.3
 import PackageDescription
 
-let remoteKotlinUrl = "https://touchlabtest.jfrog.io/artifactory/example-repo-local/KMMBridgeSampleKotlin/shared-kmmbridge/0.6.1666117999945/shared-kmmbridge-0.6.1666117999945.zip"
+let remoteKotlinUrl = "https://touchlabtest.jfrog.io/artifactory/default-swift/KMMBridgeSampleKotlin/shared-kmmbridge/0.6.1666122607919/shared-kmmbridge-0.6.1666122607919.zip"
 let remoteKotlinChecksum = "5a9231f0a02283aee7722711fd79f71bed8c3e73ee07abe8c9f944e3bf8705c2"
 let packageName = "shared"
 
