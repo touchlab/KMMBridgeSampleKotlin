@@ -3,7 +3,7 @@ on: workflow_dispatch
 
 jobs:
   call-kmmbridge-publish:
-    runs-ons: macos-latest
+    runs-on: macos-latest
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v3
