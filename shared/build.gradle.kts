@@ -54,7 +54,7 @@ publishing {
             val USERNAME: String? by project
             val PASSWORD: String? by project
             name = "Artifactory"
-            url = uri("https://touchlabtest.jfrog.io/artifactory/default-swift")
+            url = uri("https://touchlabtest.jfrog.io/artifactory/faktorygradle")
             credentials {
                 this.username = USERNAME
                 this.password = PASSWORD
@@ -67,8 +67,7 @@ publishing {
 kmmbridge {
     mavenPublishArtifacts("Artifactory")
     timestampVersions()
-//    githubReleaseArtifacts()
     spm()
-//    cocoapods("git@github.com:touchlab/PublicPodspecs.git")
+    cocoapods("git@github.com:touchlab/PublicPodspecs.git")
     versionPrefix.set("0.6")
 }

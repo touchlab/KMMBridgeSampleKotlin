@@ -3,8 +3,45 @@ on: workflow_dispatch
 
 jobs:
   call-kmmbridge-publish:
-    uses: touchlab/KMMBridgeGithubWorkflow/.github/workflows/faktorybuildbranches.yml@v0.3
-    secrets:
-      PODSPEC_SSH_KEY: ${{ secrets.PODSPEC_SSH_KEY }}
-    with:
-      GRADLE_PARAMS: -PUSERNAME=${{ secrets.ARTIFACTORY_USERNAME}} -PPASSWORD=${{ secrets.ARTIFACTORY_PASSWORD }}
+  steps:
+    - name: Checkout the repo
+      uses: actions/checkout@v3
+
+    - name: Apply SSH Key
+      if: ${{ env.PODSPEC_SSH_KEY_EXISTS == 'true' }}
+      uses: webfactory/ssh-agent@v0.5.4
+      with:
+        ssh-private-key: ${{ secrets.PODSPEC_SSH_KEY }}
+
+  #  - uses: extractions/netrc@v1
+  #    with:
+  #      machine: api.github.com
+  #      username: "cirunner"
+  #      password: ${{ secrets.GITHUB_TOKEN }}
+
+  #  - uses: extractions/netrc@v1
+  #    with:
+  #      machine: maven.pkg.github.com
+  #      username: "cirunner"
+  #      password: ${{ secrets.GITHUB_TOKEN }}
+
+    - uses: actions/setup-java@v2
+      with:
+        distribution: "adopt"
+        java-version: "11"
+
+    - name: Validate Gradle Wrapper
+      uses: gradle/wrapper-validation-action@v1
+
+    - name: Cache build tooling
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.gradle/caches
+          ~/.konan
+        key: ${{ runner.os }}-v4-${{ hashFiles('*.gradle.kts') }}
+
+    - name: Build Main
+      run: ./gradlew kmmBridgePublish -PGITHUB_PUBLISH_TOKEN=${{ secrets.GITHUB_TOKEN }} -PGITHUB_REPO=${{ github.repository }} ${{ secrets.gradle_params }} --no-daemon --stacktrace
+      env:
+        GRADLE_OPTS: -Dkotlin.incremental=false -Dorg.gradle.jvmargs="-Xmx3g -XX:MaxPermSize=2048m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8 -XX:MaxMetaspaceSize=512m"
