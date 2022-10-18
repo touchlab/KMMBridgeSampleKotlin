@@ -2,17 +2,9 @@ name: KMM Bridge Publish Release
 on: workflow_dispatch
 
 jobs:
-  check:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: extractions/netrc@v1
-        with:
-          machine: touchlabtest.jfrog.io
-          username: ${{ secrets.ARTIFACTORY_USERNAME }}
-          password: ${{ secrets.ARTIFACTORY_PASSWORD }}
-
-      - uses: touchlab/KMMBridgeGithubWorkflow/.github/workflows/faktorybuildbranches.yml@v0.3
-        with:
-          PODSPEC_SSH_KEY: ${{ secrets.PODSPEC_SSH_KEY }}
-          GRADLE_PARAMS: -PUSERNAME=${{ secrets.ARTIFACTORY_USERNAME}} -PPASSWORD=${{ secrets.ARTIFACTORY_PASSWORD }}
+  call-kmmbridge-publish:
+    uses: touchlab/KMMBridgeGithubWorkflow/.github/workflows/faktorybuildbranches.yml@v0.3
+    secrets:
+      PODSPEC_SSH_KEY: ${{ secrets.PODSPEC_SSH_KEY }}
+    with:
+      GRADLE_PARAMS: -PUSERNAME=${{ secrets.ARTIFACTORY_USERNAME}} -PPASSWORD=${{ secrets.ARTIFACTORY_PASSWORD }}
