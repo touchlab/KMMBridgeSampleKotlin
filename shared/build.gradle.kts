@@ -54,7 +54,7 @@ publishing {
             val USERNAME: String? by project
             val PASSWORD: String? by project
             name = "Artifactory"
-            url = uri("https://touchlabtest.jfrog.io/artifactory/faktorygradle")
+            url = uri("https://touchlabtest.jfrog.io/artifactory/example-repo-local")
             credentials {
                 this.username = USERNAME
                 this.password = PASSWORD
