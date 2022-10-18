@@ -68,7 +68,7 @@ kmmbridge {
     mavenPublishArtifacts("Artifactory")
     timestampVersions()
 //    githubReleaseArtifacts()
-//    spm()
-    cocoapods("git@github.com:touchlab/PublicPodspecs.git")
+    spm()
+//    cocoapods("git@github.com:touchlab/PublicPodspecs.git")
     versionPrefix.set("0.6")
 }
