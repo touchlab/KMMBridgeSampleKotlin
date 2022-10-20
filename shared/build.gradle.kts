@@ -37,7 +37,7 @@ kmmbridge {
     mavenPublishArtifacts()
 
     spm()
-    // cocoapods("git@gitlab.com:kickstart-testing/bridge-maven.git")
+    cocoapods("git@gitlab.com:kickstart-testing/yes-this-is-awesome.git")
     versionPrefix.set("0.6")
 }
 
@@ -46,7 +46,7 @@ val gitLabPrivateToken: String by project
 publishing {
     repositories {
         maven {
-            url = uri("https://gitlab.com/api/v4/projects/40398438/packages/maven")
+            url = uri("https://gitlab.com/api/v4/projects/40398972/packages/maven")
             name = "GitLab"
             credentials(HttpHeaderCredentials::class) {
                 name = "Private-Token"
