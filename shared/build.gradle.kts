@@ -1,7 +1,10 @@
+import co.touchlab.faktory.artifactmanager.GithubReleaseArtifactManager
+
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
-    id("co.touchlab.faktory.kmmbridge") version "0.2.2"
+    `maven-publish`
+    id("co.touchlab.faktory.kmmbridge") version "1.1"
     kotlin("native.cocoapods")
 }
 
@@ -29,9 +32,29 @@ android {
 }
 
 kmmbridge {
-    githubReleaseArtifacts()
-    githubReleaseVersions()
+    timestampVersions()
+
+    mavenPublishArtifacts()
+
     spm()
-    cocoapods("git@github.com:touchlab/PublicPodspecs.git")
+    // cocoapods("git@gitlab.com:kickstart-testing/bridge-maven.git")
     versionPrefix.set("0.6")
+}
+
+val gitLabPrivateToken: String by project
+
+publishing {
+    repositories {
+        maven {
+            url = uri("https://gitlab.com/api/v4/projects/40398438/packages/maven")
+            name = "GitLab"
+            credentials(HttpHeaderCredentials::class) {
+                name = "Private-Token"
+                value = gitLabPrivateToken
+            }
+            authentication {
+                create<HttpHeaderAuthentication>("header")
+            }
+        }
+    }
 }
