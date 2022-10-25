@@ -1,5 +1,3 @@
-import co.touchlab.faktory.artifactmanager.GithubReleaseArtifactManager
-
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
@@ -31,22 +29,24 @@ android {
     }
 }
 
+val gitLabPrivateToken: String by project
+
 kmmbridge {
     timestampVersions()
 
     mavenPublishArtifacts()
 
+    cocoapods("https://psh1:${gitLabPrivateToken}@gitlab.com/kickstart-testing/sample-kotlin.git")
+
     spm()
-    cocoapods("git@gitlab.com:kickstart-testing/yes-this-is-awesome.git")
+    
     versionPrefix.set("0.6")
 }
-
-val gitLabPrivateToken: String by project
 
 publishing {
     repositories {
         maven {
-            url = uri("https://gitlab.com/api/v4/projects/40398972/packages/maven")
+            url = uri("https://gitlab.com/api/v4/projects/40400272/packages/maven")
             name = "GitLab"
             credentials(HttpHeaderCredentials::class) {
                 name = "Private-Token"
