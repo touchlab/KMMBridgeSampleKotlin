@@ -36,11 +36,11 @@ kmmbridge {
 
     mavenPublishArtifacts()
 
-    // cocoapods("https://psh1:${gitLabPrivateToken}@gitlab.com/kickstart-testing/sample-kotlin.git")
+    cocoapods("https://psh1:glpat-ddvTK92iCDUrqh1vmFps@gitlab.com/kickstart-testing/sample-kotlin.git")
 
     spm()
 
-    versionPrefix.set("0.6")
+    versionPrefix.set("0.7")
 }
 
 publishing {
