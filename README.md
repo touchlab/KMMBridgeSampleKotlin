@@ -8,4 +8,4 @@ gradle project dependency. The `shared` module is also published as a CocoaPod r
 and as an SPM Package directly in this repo with a `Package.swift` in the repo root. Publishing is done with via a manually triggered GitHub action [here](https://github.com/touchlab/KMMBridgeSampleKotlin/blob/main/.github/workflows/main.yml) 
 that demonstrates using the KMMBridgeGitHubWorkflow. 
 
-The CocoaPod is used in [this project](https://github.com/touchlab/KMMBridgeSampleCocoaPods) and the SPM Package is used in [this project](https://github.com/touchlab/KMMBridgeSampleKotlin).  
+The CocoaPod is used in [this project](https://github.com/touchlab/KMMBridgeSampleCocoaPods) and the SPM Package is used in [this project](https://github.com/touchlab/KMMBridgeSampleSpm).  
