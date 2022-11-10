@@ -32,7 +32,7 @@ android {
 addGithubPackagesRepository()
 kmmbridge {
     mavenPublishArtifacts()
-    githubReleaseVersions()
+    timestampVersions()
     spm()
     cocoapods("git@github.com:touchlab/PublicPodspecs.git")
     versionPrefix.set("0.7")
