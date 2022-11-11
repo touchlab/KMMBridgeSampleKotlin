@@ -10,3 +10,4 @@ jobs:
       PODSPEC_SSH_KEY: ${{ secrets.PODSPEC_SSH_KEY }}
       netrcUsername: ${{ secrets.ARTIFACTORY_USERNAME }} 
       netrcPassword: ${{ secrets.ARTIFACTORY_PASSWORD }} 
+      gradle_params: -PUSERNAME=${{ secrets.ARTIFACTORY_USERNAME}} -PPASSWORD=${{ secrets.ARTIFACTORY_PASSWORD }}
