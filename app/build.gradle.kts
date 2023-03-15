@@ -29,7 +29,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.3.0"
+        kotlinCompilerExtensionVersion = "1.4.3"
     }
 }
 
@@ -37,7 +37,7 @@ dependencies {
     val composeVersion = "1.2.1"
     implementation(project(":shared"))
     implementation("androidx.core:core-ktx:1.8.0")
-    implementation("androidx.compose.compiler:compiler:1.3.2")
+    implementation("androidx.compose.compiler:compiler:1.4.3")
     implementation("androidx.compose.ui:ui:$composeVersion")
     implementation("androidx.compose.ui:ui-tooling:$composeVersion")
     implementation("androidx.compose.foundation:foundation:$composeVersion")

@@ -1,7 +1,7 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
-    id("co.touchlab.faktory.kmmbridge") version "0.3.4"
+    id("co.touchlab.faktory.kmmbridge") version "0.3.7"
     `maven-publish`
     kotlin("native.cocoapods")
 }
@@ -24,7 +24,6 @@ android {
 
     defaultConfig {
         minSdk = 21
-        targetSdk = 32
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 }
