@@ -1,6 +1,8 @@
 name: KMM Bridge Publish Release
 on: workflow_dispatch
-permissions: write-all
+permissions:
+  contents: write
+  packages: write
 
 jobs:
   call-kmmbridge-publish:
