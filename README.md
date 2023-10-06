@@ -1,3 +1,7 @@
+# This repo is archived
+
+KMMBridge has had a major update and has a new template! See [KMP Team Workflows with KMMBridge](https://touchlab.co/kmmbridge-team-workflows) for details.
+
 # KMMBridgeSampleKotlin
 Sample showing usage of the [KMMBridge](https://github.com/touchlab/KMMBridge) gradle plugin for publishing both Swift Package Manager and 
 CocoaPods iOS frameworks using GitHub releases to store published artifacts. See [the setup guide](https://touchlab.github.io/KMMBridge/docs/DEFAULT_GITHUB_FLOW) for more info. 
